@@ -117,31 +117,31 @@
 
     <!-- ARKA PLAN MÜZİĞİ -->
     <audio id="bg-music" loop>
-        <source src="sarki.mp3" type="audio/mpeg">
+        <source src="sarki.mp3.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Aynı gün doğmanıza özel hazırladığım sözler ve fotoğraf eşleşmeleri
+        // Dosya uzantılarını senin yüklediğin gibi .jpeg olarak güncelledim
         const storySteps = [
             {
                 text: "Dünyaya aynı gün gözlerimizi açmışız... Hayatın bana verdiği en güzel, en tatlı tesadüf kesinlikle sensin canım kuzenim! 🥳💖",
-                image: "fotograf1.jpg"
+                image: "fotograf1.jpeg"
             },
             {
                 text: "Herkes doğum gününde tek bir dilek dilerken, ben her yaşımda iyi ki benimle aynı gün doğmuşsun diye şükrediyorum. Birlikte büyümek harika!",
-                image: "fotograf2.jpg"
+                image: "fotograf2.jpeg"
             },
             {
                 text: "Sadece kuzen değil, aynı gün doğmuş iki suç ortağıyız biz! Seninle saçmalamayı, gülmeyi ve her anı paylaşmayı hiçbir şeye değişmem. 🌟",
-                image: "fotograf3.jpg"
+                image: "fotograf3.jpeg"
             },
             {
                 text: "Geleceğimiz de tıpkı senin kalbin gibi temiz ve neşeli geçsin. Yeni yaşımız ikimize de aradığımız tüm mutlulukları getirsin.",
-                image: "fotograf4.jpg"
+                image: "fotograf4.jpeg"
             },
             {
                 text: "İyi ki doğduk, iyi ki varız! Dünyanın en şanslı kuzeninden, dünyanın en harika kuzenine: Doğum günümüz kutlu olsun! Seni çok seviyorum! 🎉🎂❤️",
-                image: "fotograf5.jpg"
+                image: "fotograf5.jpeg"
             }
         ];
 
@@ -155,7 +155,6 @@
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('story-screen').classList.remove('hidden');
             
-            // Müziğin ses seviyesi
             bgMusic.volume = 0.4; 
             bgMusic.play().catch(e => console.log("Müzik otomatik başlatılamadı."));
             
@@ -167,7 +166,6 @@
             if (currentStep < storySteps.length) {
                 const currentData = storySteps[currentStep];
                 
-                // Fotoğraf güncelleme
                 if(currentData.image) {
                     storyImageElement.src = currentData.image;
                     imgContainer.style.display = "block";
@@ -175,10 +173,8 @@
                     imgContainer.style.display = "none";
                 }
 
-                // Yazıyı daktilo efektiyle ekrana yazdırma
                 typeWriter(currentData.text);
 
-                // Son adıma gelindiğinde buton değişir ve konfetiler hızlanır
                 if (currentStep === storySteps.length - 1) {
                     document.getElementById('next-btn').innerHTML = "İyi ki Benim Kuzenimsin! 🥰";
                     setInterval(createConfetti, 120); 
@@ -193,7 +189,6 @@
             }
         }
 
-        // Yazı akış efekti fonksiyonu
         let timer;
         function typeWriter(text) {
             clearInterval(timer);
@@ -206,10 +201,9 @@
                 } else {
                     clearInterval(timer);
                 }
-            }, 45); // Yazı akış hızı (milisaniye)
+            }, 45); 
         }
 
-        // Konfeti yağmuru fonksiyonu
         function createConfetti() {
             const colors = ['#e94560', '#f2d74e', '#4ef2d2', '#ffffff'];
             const confetti = document.createElement('div');
